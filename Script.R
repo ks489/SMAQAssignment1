@@ -4,6 +4,12 @@ library(foreign)
 EffortEstimation <- function(x) {12 * (x)}
 ggplot(data.frame(x=c(0,250000)), aes(x=x)) + stat_function(fun = EffortEstimation)
 
+EffortEstimation <- function(x) {12 * (x) + 100000}
+ggplot(data.frame(x=c(0,250000)), aes(x=x)) + stat_function(fun = EffortEstimation)
+
+EffortEstimation <- function(x) {12 * (x) * (x^1.5) + 100000}
+ggplot(data.frame(x=c(0,250000)), aes(x=x)) + stat_function(fun = EffortEstimation)
+
 nasa <- read.arff("D:\\Projects\\Other\\SoftwareQualityMeasurementAssignment1\\nasa93.arff.txt")
 #Set the font size to a large font to make the plots more readable
 theme_set(theme_gray(base_size = 18))

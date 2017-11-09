@@ -1,0 +1,43 @@
+1. A registration facility for users and home-owners.
+
+2. Home owners should be able to upload details and pictures of their property onto a central database.
+
+3. The central database should keep track of when a property is available (i.e. when users book a
+property, the availability dates should be updated accordingly).
+
+4. Whilst browsing, users should be able to keep track of their favourites (stored locally).
+
+5. Once a user has decided upon a property, the website should prompt them to ask them for the
+dates they require (ensuring that only valid dates are entered). It should also ask them to write a
+short message introducing themselves to the owner.
+
+6. Once this has been submitted, the owner should be notied and, upon their logging in, should be
+presented with a pop-up message displaying the details of the request made by the user. They
+should then either conrm or reject the user's request.
+
+7. The system should also maintain a ratings-system, whereby home owners and users are given a
+rating. This rating is updated after the stay is complete { the user rates the home owner and vice
+versa.
+
+8. The system should be reasonably reliable. A degree of down-time is tolerable, but only very
+occasionally.
+
+9. The system should be capable of dealing with a reasonably high load of users.
+
+10. As a start-up, it is important that the source code should be reasonably exible; new requirements
+are bound to be frequently added.
+
+I bloated these values
+
+1. 900
+2. 1500
+3. 750
+4. 400
+5. 300
+6. 1150
+7. 1850
+8. 850
+9. 1250
+10. 1100
+
+ 
