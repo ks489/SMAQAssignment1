@@ -22,9 +22,12 @@ fit <- lm(nasa$effort~nasa$kloc)
 #Print out the coefficients of the linear model
 summary(fit)
 
+EffortEstimation <- function(x) {5.0585 * (x^1.0497) + 148.7982}
+ggplot(data.frame(x=c(0,10000)), aes(x=x)) + stat_function(fun = EffortEstimation)
+
 #This is my final estima
 EffortEstimation <- function(x) {5.0585 * (x^1.0497) + 148.7982}
-ggplot(data.frame(x=c(0,250000)), aes(x=x)) + stat_function(fun = EffortEstimation)
+ggplot(data.frame(x=c(0,10000)), aes(x=x)) + stat_function(fun = EffortEstimation)
 
 EffortEstimation <- function(x) {12 * (x)}
 #Plot the function we have produced
