@@ -7,7 +7,7 @@ ggplot(data.frame(x=c(0,250000)), aes(x=x)) + stat_function(fun = EffortEstimati
 EffortEstimation <- function(x) {12 * (x) + 100000}
 ggplot(data.frame(x=c(0,250000)), aes(x=x)) + stat_function(fun = EffortEstimation)
 
-EffortEstimation <- function(x) {12 * (x) * (x^1.5) + 100000}
+EffortEstimation <- function(x) {5 * (x^1.1) + 100000}
 ggplot(data.frame(x=c(0,250000)), aes(x=x)) + stat_function(fun = EffortEstimation)
 
 nasa <- read.arff("D:\\Projects\\Other\\SoftwareQualityMeasurementAssignment1\\nasa93.arff.txt")
@@ -21,8 +21,22 @@ qplot(data=nasa,x=kloc,y=effort,size=I(3))+ geom_smooth(method = "lm", se = FALS
 fit <- lm(nasa$effort~nasa$kloc)
 #Print out the coefficients of the linear model
 summary(fit)
-#Make your own function, called EffortEstimation, assuming x is the LOC we supply,
-#and that we hard code the cost per LOC as 12.
+
+#This is my final estima
+EffortEstimation <- function(x) {5.0585 * (x^1.0497) + 148.7982}
+ggplot(data.frame(x=c(0,250000)), aes(x=x)) + stat_function(fun = EffortEstimation)
+
 EffortEstimation <- function(x) {12 * (x)}
 #Plot the function we have produced
 ggplot(data.frame(x=c(0,250000)), aes(x=x)) + stat_function(fun = EffortEstimation)
+
+
+qplot(data=nasa,x=kloc,y=defects,size=I(3))
+#Add a line representing the linear regression line to the data
+qplot(data=nasa,x=kloc,y=defects,size=I(3))+ geom_smooth(method = "lm", se = FALSE)
+#Calculate the linear model
+fit <- lm(nasa$defects~nasa$kloc)
+#Print out the coefficients of the linear model
+summary(fit)
+
+

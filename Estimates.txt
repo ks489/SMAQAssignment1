@@ -40,4 +40,140 @@ I bloated these values
 9. 1250
 10. 1100
 
+
+
+
+
+===============================
+Summary from linear model effort
+===============================
+
+Call:
+lm(formula = nasa$effort ~ nasa$kloc)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1419.6  -205.8  -151.5   -44.9  6883.6 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 148.7982   116.6158   1.276    0.205    
+nasa$kloc     5.0585     0.7164   7.061  3.2e-10 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 918 on 91 degrees of freedom
+Multiple R-squared:  0.354,	Adjusted R-squared:  0.3469 
+F-statistic: 49.86 on 1 and 91 DF,  p-value: 3.203e-10
+
+===============================
+===============================
+
+===============================
+Summary from linear model defects
+===============================
+
+Call:
+lm(formula = nasa$defects ~ nasa$kloc)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6555.5  -149.4   282.7   501.9  7947.1 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -403.764    210.977  -1.914   0.0588 .  
+nasa$kloc     44.304      1.296  34.182   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1661 on 91 degrees of freedom
+Multiple R-squared:  0.9277,	Adjusted R-squared:  0.927 
+F-statistic:  1168 on 1 and 91 DF,  p-value: < 2.2e-16
+
+
+
+1250 = 250kloc * 5  - effort
+11000 = 250klco * 44 - defects
+
+1000 lines of code
+ 5 = 1 * 5
+ 44 = 1 * 44
  
+ 
+ 
+WORKING OUT SCALE FACTOR USING COCCOMO 2
+
+
+Flex = 4 -> 2.03
+Pmat = 5 -> 1.56
+Prec = 3 -> 3.72
+Resl = 2 -> 5.65
+Team = 5 -> 1.01
+
+13.97 = 2.03 + 1.56 + 3.72 + 5.65 + 1.01
+0.1397 = 13.97 * 0.01
+where B = 0.91(for COCOMO2. 2000)
+
+1.0497 = 0.91 + 0.1397
+
+b = 1.0497 = 0.91 + 0.01 * (2.03 + 1.56 + 3.72 + 5.65 + 1.01)
+
+E = a * s^b + c
+
+
+
+
+
+
+
+1. 900 -> 0.9 * (5.0585^1.0497) + 148.7982
+2. 1500 -> 1.5 * (5.0585^1.0497) + 148.7982
+3. 750 -> 0.75 * (5.0585^1.0497) + 148.7982
+4. 400 -> 0.4 * (5.0585^1.0497) + 148.7982
+5. 300 -> 0.3 * (5.0585^1.0497) + 148.7982
+6. 1150 -> 1.15 * (5.0585^1.0497) + 148.7982
+7. 1850 -> 1.85 * (5.0585^1.0497) + 148.7982
+8. 850 -> 0.85 * (5.0585^1.0497) + 148.7982
+9. 1250 -> 1.25 * (5.0585^1.0497) + 148.7982
+10. 1100 -> 1.1 * (5.0585^1.0497) + 148.7982
+
+10050 -> 10.05 = 55.103311270 + 148.7982
+
+
+
+1. 4.9346 
+2. 8.2243
+3. 4.1121
+4. 2.1931
+5. 1.6449
+6. 6.3054
+7. 10.1433
+8. 4.6605
+9. 6.8536
+10. 6.0312
+
+55.103
+
++ 148.7982
+
+55.103 + 148.7982
+
+203.9012
+
+R Code 
+EffortEstimation <- function(x) {5.0585 * (x^1.0497) + 148.7982}
+ggplot(data.frame(x=c(0,250000)), aes(x=x)) + stat_function(fun = EffortEstimation)
+
+
+
+
+
+
+
+
+
+
+
+
+
