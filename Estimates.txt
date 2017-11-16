@@ -27,6 +27,11 @@ occasionally.
 10. As a start-up, it is important that the source code should be reasonably exible; new requirements
 are bound to be frequently added.
 
+3 : 6
+6: 5
+7: 6
+
+
 I bloated these values
 
 1. 900
